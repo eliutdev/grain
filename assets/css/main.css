@@ -35,3 +35,13 @@
   margin-inline-start: 0;
   margin-inline-end: 0;
 }
+
+.nuxt-content h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.nuxt-content h3 {
+  font-size: 1.25em;
+  font-weight: bold;
+}
