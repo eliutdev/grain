@@ -11,7 +11,7 @@ tags: [bit-masks]
 It's difficult to find an app that doesn't rely on some form of conditional
 logic to implement its functionality. This is almost always performed using 
 statements like:
-```
+```js
 if (processAccount === true) { 
   /* do something */
 }
@@ -58,7 +58,7 @@ to their timezones.
 Searches should be conducted by combining a bit mask for the desired time zone
 against the city-specific bit sequences to identify matches. Determining if a 
 city meets the search criteria shouldn't rely on a statement such as
-```
+```js
 if (city[i].gmtOffset === searchOffset ) {
   /* Found it! */
 }
