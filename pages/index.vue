@@ -1,12 +1,7 @@
 <template>
   <section class="section">
     <p v-if="!$fetchState.pending && $fetchState.error">An error occurred :(</p>
-    <template v-else>
-      <h1 class="title is-1">🏖️ Arena Grain</h1>
-      <Search :items="completeList" />
-      <hr />
-      <lazy-list v-if="completeList.length" :items="completeList" />
-    </template>
+    <lazy-list v-else :items="completeList" />
   </section>
 </template>
 
