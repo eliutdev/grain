@@ -1,5 +1,7 @@
 <template>
-  <h1>{{ idea.title }}</h1>
+  <div class="section">
+    <nuxt-content :document="idea" />
+  </div>
 </template>
 
 <script>
