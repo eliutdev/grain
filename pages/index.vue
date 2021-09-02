@@ -43,7 +43,7 @@ export default {
       }
     },
     setupList() {
-      return this.beginner.concat(this.intermediate).concat(this.advanced)
+      return [...this.beginner, ...this.intermediate, ...this.advanced]
     },
   },
 }
