@@ -1,5 +1,5 @@
 <template>
-  <section class="section py-3">
+  <header class="section py-3">
     <b-navbar>
       <template #start>
         <b-navbar-item tag="nuxt-link" to="/">🏖️ Arena Grain</b-navbar-item>
@@ -8,7 +8,7 @@
         <Search />
       </template>
     </b-navbar>
-  </section>
+  </header>
 </template>
 
 <script>
