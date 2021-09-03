@@ -1,5 +1,7 @@
 <template>
   <div class="section">
+    <!-- eslint-disable-next-line vue/no-v-html -->
+    <div v-html="parseTags(idea.tags)"></div>
     <nuxt-content :document="idea" />
   </div>
 </template>
@@ -15,6 +17,11 @@ export default {
     return {
       idea: result[0],
     }
+  },
+  methods: {
+    parseTags(tags) {
+      return tags.map((tag) => `<span class="tag">#${tag}</span>`).join(' ')
+    },
   },
 }
 </script>
