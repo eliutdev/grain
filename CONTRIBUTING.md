@@ -5,7 +5,8 @@ If you want to propose a new idea, please use the [Example Guide](/TEMPLATE.md) 
 Before creating a PR, please make sure that your suggestion is not already added to the project. 
 
 You can submit an update if you believe it improves an existing idea.
-Make sure you check your spelling and grammar.
+
+You must edit the [content](/content) directory.
 
 Create individual PR for each suggestion.
 Thank you for spending your time to improve this project! ✨
