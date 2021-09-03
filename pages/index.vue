@@ -1,7 +1,6 @@
 <template>
   <section class="section">
-    <p v-if="!$fetchState.pending && $fetchState.error">An error occurred :(</p>
-    <List v-else :items="completeList" />
+    <List :items="ideas" />
   </section>
 </template>
 
@@ -13,14 +12,14 @@ export default {
       beginner: [],
       intermediate: [],
       advanced: [],
-      completeList: [],
+      ideas: [],
     }
   },
   async fetch() {
     this.beginner = await this.fetchContent('beginner')
     this.intermediate = await this.fetchContent('intermediate')
     this.advanced = await this.fetchContent('advanced')
-    this.completeList = this.setupList()
+    this.ideas = this.setupList()
   },
   // call fetch only on client-side
   fetchOnServer: false,
