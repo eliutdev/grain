@@ -66,6 +66,7 @@ export default {
         document.readingTimeText = text
       }
     },
+    'generate:cache:ignore': (ignore) => ignore.push('content'),
   },
 
   generate: {
