@@ -1,32 +1,16 @@
 <template>
   <section class="section">
-    <List v-if="ideas.length" :items="ideas" />
+    <List :items="ideas" />
   </section>
 </template>
 
 <script>
 export default {
   name: 'Home',
-  data() {
-    return {
-      beginner: [],
-      intermediate: [],
-      advanced: [],
-      ideas: [],
-    }
-  },
-  async fetch() {
-    this.beginner = await this.fetchContent('beginner')
-    this.intermediate = await this.fetchContent('intermediate')
-    this.advanced = await this.fetchContent('advanced')
-    this.ideas = this.setupList()
-  },
-  // call fetch only on client-side
-  fetchOnServer: false,
-  methods: {
-    async fetchContent(name) {
+  async asyncData({ $content }) {
+    const fetchContent = async (name) => {
       try {
-        const content = await this.$content(name)
+        const content = await $content(name)
           .only(['title', 'description', 'tags'])
           .limit(10)
           .fetch()
@@ -35,10 +19,15 @@ export default {
         // eslint-disable-next-line no-console
         console.error(error)
       }
-    },
-    setupList() {
-      return [...this.beginner, ...this.intermediate, ...this.advanced]
-    },
+    }
+
+    const beginner = await fetchContent('beginner')
+    const intermediate = await fetchContent('intermediate')
+    const advanced = await fetchContent('advanced')
+
+    return {
+      ideas: [...beginner, ...intermediate, ...advanced],
+    }
   },
 }
 </script>
