@@ -64,6 +64,8 @@ export default {
       if (document.extension === '.md') {
         const { text } = require('reading-time')(document.text)
         document.readingTimeText = text
+        // idea type
+        document.type = document.path.split('/')[1]
       }
     },
     'generate:cache:ignore': (ignore) => ignore.push('content'),

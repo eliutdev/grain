@@ -24,9 +24,7 @@
 </template>
 
 <script>
-const capitalize = (str) => {
-  return str.charAt(0).toUpperCase() + str.slice(1)
-}
+import { capitalize, kebabCase } from '../utils/string'
 
 export default {
   name: 'Search',
@@ -59,14 +57,13 @@ export default {
       const result = []
 
       list.forEach((item) => {
-        const type = item.path.split('/')[1]
         const items = result.find(
-          (i) => i.type.toLowerCase() === type.toLowerCase()
+          (i) => i.type.toLowerCase() === item.type.toLowerCase()
         )
         if (items) {
           items.items.push(item)
         } else {
-          result.push({ type: capitalize(type), items: [item] })
+          result.push({ type: capitalize(item.type), items: [item] })
         }
       })
 
@@ -74,7 +71,9 @@ export default {
     },
     async fetchContent(name) {
       try {
-        const content = await this.$content(name).only(['title']).fetch()
+        const content = await this.$content(name)
+          .only(['title', 'type'])
+          .fetch()
         return content
       } catch (error) {
         // eslint-disable-next-line no-console
@@ -82,7 +81,7 @@ export default {
       }
     },
     handleSelectedIdea(option) {
-      this.$router.push(option.path)
+      this.$router.push(`/${kebabCase(option.title)}`)
     },
   },
 }
