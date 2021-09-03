@@ -8,7 +8,7 @@
         idea.author
       }}</a>
       on
-      {{ getPublishAt(idea) }}
+      {{ getPublishAt(idea) }}・{{ idea.readingTimeText }}
     </p>
     <nuxt-content :document="idea" />
   </div>
