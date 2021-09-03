@@ -1,7 +1,12 @@
 <template>
   <section class="section">
-    <!-- eslint-disable-next-line vue/no-v-html -->
-    <div v-html="parseTags(idea.tags)"></div>
+    <!-- eslint-disable vue/no-v-html -->
+    <nuxt-link
+      v-for="(tag, index) in parseTags(idea.tags)"
+      :key="index"
+      :to="tag.path"
+      v-html="tag.html"
+    />
     <p class="my-2">
       Proposal by
       <a :href="`https://github.com/${idea.author}`" target="_blank">{{
@@ -29,7 +34,12 @@ export default {
   },
   methods: {
     parseTags(tags) {
-      return tags.map((tag) => `<span class="tag">#${tag}</span>`).join(' ')
+      return tags.map((tag) => {
+        return {
+          path: `/tags/${tag}`,
+          html: `<span class="tag mr-1">#${tag}</span>`,
+        }
+      })
     },
     getPublishAt(idea) {
       const date = new Date(idea.createdAt)
