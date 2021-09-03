@@ -3,7 +3,7 @@
   <div class="list">
     <article v-for="item in items" :key="item.slug">
       <h2 class="subtitle is-4">
-        <nuxt-link :to="item.path">
+        <nuxt-link :to="kebabCase(item.title)">
           {{ item.title }}
         </nuxt-link>
       </h2>
@@ -21,6 +21,8 @@
 </template>
 
 <script>
+const kebabCase = (srt) => srt.replace(/\s+/g, '-').toLowerCase()
+
 export default {
   name: 'List',
   props: {
@@ -39,6 +41,7 @@ export default {
     },
   },
   methods: {
+    kebabCase,
     parseTags(tags) {
       return tags.map((tag) => {
         return {
