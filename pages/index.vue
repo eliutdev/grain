@@ -1,7 +1,7 @@
 <template>
   <section class="section">
     <p v-if="!$fetchState.pending && $fetchState.error">An error occurred :(</p>
-    <lazy-list v-else :items="completeList" />
+    <List v-else :items="completeList" />
   </section>
 </template>
 
