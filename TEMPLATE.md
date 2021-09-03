@@ -1,6 +1,12 @@
+---
+title: title to display
+author: your github username
+tags: [my, idea]
+---
+
 # Application Name
 
-**Tier:** Add corresponding tier (1-Beginner, 2-Intermediate, 3-Advanced)
+**Tier:** Add corresponding tier (Beginner, Intermediate, Advanced)
 
 Add a clear description of the application and its main features.
 Answer the following questions:
