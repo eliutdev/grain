@@ -2,19 +2,12 @@
   <!--  eslint-disable vue/no-v-html  -->
   <div class="list">
     <article v-for="item in items" :key="item.slug">
-      <h2 class="subtitle is-4">
+      <h2 class="subtitle is-4 mb-2">
         <nuxt-link :to="`/${kebabCase(item.title)}`">
           {{ item.title }}
         </nuxt-link>
       </h2>
-      <p>
-        <nuxt-link
-          v-for="(tag, index) in parseTags(item.tags)"
-          :key="index"
-          :to="tag.path"
-          v-html="tag.html"
-        />
-      </p>
+      <IdeaInfo :idea="item" />
       <hr />
     </article>
   </div>

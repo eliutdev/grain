@@ -1,17 +1,38 @@
 <template>
   <section class="section">
-    <List :items="ideas" />
+    <p v-if="!$fetchState.pendin && $fetchState.error">An error occured :(</p>
+    <List v-else :items="ideas" />
   </section>
 </template>
 
 <script>
 export default {
   name: 'Home',
-  async asyncData({ $content }) {
-    const fetchContent = async (name) => {
+  data() {
+    return {
+      ideas: [],
+    }
+  },
+  async fetch() {
+    const beginner = await this.fetchContent('beginner')
+    const intermediate = await this.fetchContent('intermediate')
+    const advanced = await this.fetchContent('advanced')
+    this.ideas = [...beginner, ...intermediate, ...advanced]
+  },
+  // call fetch only on client-side
+  fetchOnServer: false,
+  methods: {
+    async fetchContent(name) {
       try {
-        const content = await $content(name)
-          .only(['title', 'description', 'tags'])
+        const content = await this.$content(name)
+          .only([
+            'title',
+            'description',
+            'tags',
+            'author',
+            'createdAt',
+            'readingTimeText',
+          ])
           .limit(10)
           .fetch()
         return content
@@ -19,15 +40,7 @@ export default {
         // eslint-disable-next-line no-console
         console.error(error)
       }
-    }
-
-    const beginner = await fetchContent('beginner')
-    const intermediate = await fetchContent('intermediate')
-    const advanced = await fetchContent('advanced')
-
-    return {
-      ideas: [...beginner, ...intermediate, ...advanced],
-    }
+    },
   },
 }
 </script>
