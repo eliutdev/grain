@@ -1,5 +1,5 @@
 <template>
-  <div class="section">
+  <section class="section">
     <!-- eslint-disable-next-line vue/no-v-html -->
     <div v-html="parseTags(idea.tags)"></div>
     <p class="my-2">
@@ -11,7 +11,7 @@
       {{ getPublishAt(idea) }}・{{ idea.readingTimeText }}
     </p>
     <nuxt-content :document="idea" />
-  </div>
+  </section>
 </template>
 
 <script>
