@@ -1,7 +1,7 @@
 <template>
   <!--  eslint-disable vue/no-v-html  -->
   <div class="list">
-    <ul v-for="item in items" :key="item.slug">
+    <article v-for="item in items" :key="item.slug">
       <h2 class="subtitle is-4">
         <nuxt-link :to="item.path">
           {{ item.title }}
@@ -16,7 +16,7 @@
         />
       </p>
       <hr />
-    </ul>
+    </article>
   </div>
 </template>
 
@@ -27,7 +27,15 @@ export default {
     items: {
       type: Array,
       required: true,
-      default: () => [],
+      default: () => {
+        return [
+          {
+            title: '',
+            path: '/',
+            tags: [],
+          },
+        ]
+      },
     },
   },
   methods: {
