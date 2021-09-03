@@ -23,10 +23,11 @@
 export default {
   name: 'Idea',
   async asyncData({ params, $content }) {
-    const path = `/${params.type}/${params.slug}`
-    const result = await $content(params.type).where({ path }).fetch()
+    const result = await $content({ deep: true })
+      .where({ path: { $contains: [params.idea] } })
+      .fetch()
     if (result.length === 0) {
-      throw new Error(`Not found: ${path}`)
+      throw new Error(`Not found`)
     }
     return {
       idea: result[0],
