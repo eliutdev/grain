@@ -6,6 +6,7 @@
       </template>
       <template #end>
         <Search />
+        <ColorModePicker />
       </template>
     </b-navbar>
   </header>
