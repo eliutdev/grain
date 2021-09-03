@@ -1,6 +1,6 @@
 ---
 title: Dynamic CSS Variables
-description: CSS variables are a powerful tool that lets the developer associate a symbolic...
+author: ideabrian
 tags: [css, variables]
 ---
 
