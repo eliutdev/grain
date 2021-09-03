@@ -1,6 +1,6 @@
 <template>
   <section class="section">
-    <List :items="ideas" />
+    <List v-if="ideas.length" :items="ideas" />
   </section>
 </template>
 
