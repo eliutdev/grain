@@ -60,16 +60,13 @@ export default {
   },
 
   hooks: {
-    'generate:cache:ignore': (ignore) => ignore.push('content'),
-  },
-
-  generate: {
-    async routes() {
-      const { $content } = require('@nuxt/content')
-      const files = await $content({ deep: true }).only(['path']).fetch()
-
-      return files.map((file) => (file.path === '/index' ? '/' : file.path))
+    'content:file:beforeInsert': (document) => {
+      if (document.extension === '.md') {
+        const { text } = require('reading-time')(document.text)
+        document.readingTimeText = text
+      }
     },
+    'generate:cache:ignore': (ignore) => ignore.push('content'),
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
