@@ -1,4 +1,5 @@
 <template>
+  <!--  eslint-disable vue/no-v-html  -->
   <div class="list">
     <ul v-for="item in items" :key="item.slug">
       <h2 class="subtitle is-4">
@@ -6,8 +7,14 @@
           {{ item.title }}
         </nuxt-link>
       </h2>
-      <!-- eslint-disable-next-line vue/no-v-html -->
-      <p v-html="parseTags(item.tags)"></p>
+      <p>
+        <nuxt-link
+          v-for="(tag, index) in parseTags(item.tags)"
+          :key="index"
+          :to="tag.path"
+          v-html="tag.html"
+        />
+      </p>
       <hr />
     </ul>
   </div>
@@ -25,7 +32,12 @@ export default {
   },
   methods: {
     parseTags(tags) {
-      return tags.map((tag) => `<span class="tag">#${tag}</span>`).join(' ')
+      return tags.map((tag) => {
+        return {
+          path: `/tags/${tag}`,
+          html: `<span class="tag mr-1">#${tag}</span>`,
+        }
+      })
     },
   },
 }
