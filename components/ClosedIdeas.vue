@@ -1,15 +1,17 @@
 <template>
   <div class="closed-ideas">
-    <h4 class="subtitle">You can also take a look at this...</h4>
-    <div class="closed-ideas__content">
-      <nuxt-link v-if="prev" :to="prev.slug">
-        {{ prev.title }}
-      </nuxt-link>
+    <template v-if="prev || next">
+      <h4 class="subtitle">You can also take a look at this...</h4>
+      <div class="closed-ideas__content">
+        <nuxt-link v-if="prev" :to="prev.slug">
+          {{ prev.title }}
+        </nuxt-link>
 
-      <nuxt-link v-if="next" :to="next.slug">
-        {{ next.title }}
-      </nuxt-link>
-    </div>
+        <nuxt-link v-if="next" :to="next.slug">
+          {{ next.title }}
+        </nuxt-link>
+      </div>
+    </template>
   </div>
 </template>
 
