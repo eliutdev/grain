@@ -2,6 +2,8 @@
   <section>
     <IdeaInfo :idea="idea" />
     <nuxt-content :document="idea" />
+    <hr>
+    <ClosedIdeas :idea="idea" />
   </section>
 </template>
 
