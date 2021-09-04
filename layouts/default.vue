@@ -4,7 +4,7 @@
     <main class="columns is-desktop">
       <div class="column is-one-quarter">
         <h2 class="subtitle is-4">Tiers</h2>
-        <ul>
+        <ul class="tier-list">
           <li
             v-for="(level, index) in levels"
             :key="level.slug"
@@ -14,7 +14,7 @@
           </li>
         </ul>
         <h2 class="subtitle is-4">Top tags</h2>
-        <ul>
+        <u class="tag-list">
           <li
             v-for="(tag, index) in topTags"
             :key="tag"
@@ -22,7 +22,7 @@
           >
             <nuxt-link :to="`/tags/${tag}`"> #{{ tag }} </nuxt-link>
           </li>
-        </ul>
+        </u>
         <SocialIcons />
       </div>
       <div class="column">
