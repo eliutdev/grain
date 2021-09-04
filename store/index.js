@@ -1,3 +1,5 @@
+import { kebabCase } from '~/utils/string'
+
 export const state = () => ({
   ideas: [],
   tags: [],
@@ -5,7 +7,9 @@ export const state = () => ({
 
 export const actions = {
   async nuxtClientInit({ commit }, { $content }) {
-    const ideas = await $content({ deep: true }).fetch()
+    const ideas = await $content({ deep: true })
+      .sortBy('createdAt', 'desc')
+      .fetch()
 
     const tags = ideas.map((idea) => idea.tags).flat()
 
@@ -34,5 +38,11 @@ export const getters = {
       result[tag]++
     })
     return Object.keys(result).sort((a, b) => result[b] - result[a])
+  },
+  getByTag: (state) => (tag) => {
+    return state.ideas.filter((idea) => idea.tags.includes(tag))
+  },
+  getByTitle: (state) => (title) => {
+    return state.ideas.find((idea) => kebabCase(idea.title) === title)
   },
 }

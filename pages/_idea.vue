@@ -1,5 +1,5 @@
 <template>
-  <section class="section">
+  <section>
     <IdeaInfo :idea="idea" />
     <nuxt-content :document="idea" />
   </section>
@@ -8,16 +8,9 @@
 <script>
 export default {
   name: 'Idea',
-  async asyncData({ params, $content }) {
-    const result = await $content({ deep: true })
-      .where({ path: { $contains: [params.idea] } })
-      .fetch()
-    if (result.length === 0) {
-      throw new Error(`Not found`)
-    }
-    return {
-      idea: result[0],
-    }
+  async asyncData({ params, store }) {
+    const idea = await store.getters.getByTitle(params.idea)
+    return { idea }
   },
 }
 </script>

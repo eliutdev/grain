@@ -48,11 +48,7 @@ export default {
   },
   methods: {
     async getData() {
-      const beginner = await this.fetchContent('beginner')
-      const intermediate = await this.fetchContent('intermediate')
-      const advanced = await this.fetchContent('advanced')
-
-      const list = [...beginner, ...intermediate, ...advanced]
+      const list = await this.$store.state.ideas
 
       const result = []
 
@@ -68,17 +64,6 @@ export default {
       })
 
       this.parsedList = result
-    },
-    async fetchContent(name) {
-      try {
-        const content = await this.$content(name)
-          .only(['title', 'type'])
-          .fetch()
-        return content
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.error(error)
-      }
     },
     handleSelectedIdea(option) {
       this.$router.push(`/${kebabCase(option.title)}`)
