@@ -21,7 +21,6 @@ body {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background-color: var(--bg);
   color: var(--color);
-  transition: background-color 0.3s;
   min-height: 100vh;
 }
 
