@@ -1,5 +1,5 @@
 <template>
-  <header class="section py-3">
+  <header class="py-3">
     <b-navbar>
       <template #start>
         <b-navbar-item tag="nuxt-link" to="/">🏖️ Grain</b-navbar-item>
