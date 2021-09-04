@@ -14,7 +14,7 @@
           </li>
         </ul>
         <h2 class="subtitle is-4">Top tags</h2>
-        <u class="tag-list">
+        <ul class="tag-list">
           <li
             v-for="(tag, index) in topTags"
             :key="tag"
@@ -22,7 +22,7 @@
           >
             <nuxt-link :to="`/tags/${tag}`"> #{{ tag }} </nuxt-link>
           </li>
-        </u>
+        </ul>
         <SocialIcons />
       </div>
       <div class="column">
