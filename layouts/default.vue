@@ -15,10 +15,15 @@
         </ul>
         <h2 class="subtitle is-4">Top tags</h2>
         <ul>
-          <li v-for="tag in topTags" :key="tag">
+          <li
+            v-for="(tag, index) in topTags"
+            :key="tag"
+            :class="{ 'mb-5': index === topTags.length - 1 }"
+          >
             <nuxt-link :to="`/tags/${tag}`"> #{{ tag }} </nuxt-link>
           </li>
         </ul>
+        <SocialIcons />
       </div>
       <div class="column">
         <Nuxt />
