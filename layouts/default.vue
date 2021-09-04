@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container is-fullhd px-4">
     <Nav />
     <main class="columns is-desktop">
       <div class="column is-one-quarter">

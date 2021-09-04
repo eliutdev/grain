@@ -1,7 +1,7 @@
 <template>
   <header class="py-3">
     <b-navbar>
-      <template #start>
+      <template #brand>
         <b-navbar-item tag="nuxt-link" to="/">🏖️ Grain</b-navbar-item>
       </template>
       <template #end>
