@@ -45,4 +45,7 @@ export const getters = {
   getByTitle: (state) => (title) => {
     return state.ideas.find((idea) => kebabCase(idea.title) === title)
   },
+  getByTier: (state) => (tier) => {
+    return state.ideas.filter((idea) => idea.type === tier)
+  },
 }
